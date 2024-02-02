@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="1" author="anastasia.yurkova2003@gmail.com">
+        <createTable tableName="houses_owners">
+            <column name="house_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="owner_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="anastasia.yurkova2003@gmail.com">
+        <sql>
+            ALTER TABLE houses_owners
+                ADD CONSTRAINT fk_houses_people_house_id FOREIGN KEY (house_id) REFERENCES houses (id)
+        </sql>
+        <rollback>
+            <sql>
+                ALTER TABLE houses_owners DROP CONSTRAINT fk_houses_people_house_id
+            </sql>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="3" author="anastasia.yurkova2003@gmail.com">
+        <sql>
+            ALTER TABLE houses_owners
+                ADD CONSTRAINT fk_houses_people_owner_id FOREIGN KEY (owner_id) REFERENCES people (id)
+        </sql>
+        <rollback>
+            <sql>
+                ALTER TABLE houses_owners DROP CONSTRAINT fk_houses_people_owner_id
+            </sql>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

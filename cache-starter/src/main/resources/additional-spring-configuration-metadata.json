@@ -1,0 +1,16 @@
+{
+  "properties": [
+    {
+      "name": "cache.type",
+      "type": "java.lang.String",
+      "description": "The type of cache used.",
+      "defaultValue": "LRU"
+    },
+    {
+      "name": "cache.size",
+      "type": "java.lang.Integer",
+      "description": "The size of the used cache.",
+      "defaultValue": 16
+    }
+  ]
+}

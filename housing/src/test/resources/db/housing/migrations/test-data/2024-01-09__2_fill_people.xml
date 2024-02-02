@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="1" author="anastasia.yurkova2003@gmail.com">
+        <sql>
+            INSERT INTO people (uuid, name, surname, sex, passport_series, passport_number, create_date, update_date,
+                                residency_id)
+            VALUES ('6ac41ec7-fda7-4095-9b49-1c723a1574fa', 'Ivan', 'Ivanov', 'Male', 'AB', '123456',
+                    '2022-01-12T08:00:00', '2022-01-12T08:00:00', 1),
+                   ('4eac5a60-63b8-443e-9122-9b455745ae5e', 'Maria', 'Petrova', 'Female', 'CD', '789012',
+                    '2001-12-12T09:00:00', '2001-12-12T09:00:00', 2),
+                   ('05d56950-9c7b-438c-8c3a-531290834e88', 'Alexander', 'Sidorov', 'Male', 'EF', '345678',
+                    '2022-11-12T10:00:00', '2022-11-12T10:00:00', 3),
+                   ('dee20bf9-0358-440b-8dd0-72e4f1eb66bf', 'Elena', 'Kozlova', 'Female', 'GH', '901234',
+                    '2022-01-12T11:12:00', '2022-01-12T11:12:00', 4),
+                   ('cef96cf9-3ec8-4174-a449-f55b251d87eb', 'Dmitry', 'Morozov', 'Male', 'IJ', '567890',
+                    '2022-01-12T12:11:00', '2022-01-12T12:11:00', 4),
+                   ('71bd948d-1e92-481a-9b75-942c57ea14a1', 'Olga', 'Nikitina', 'Female', 'KL', '123789',
+                    '2023-01-12T13:00:00', '2023-01-12T13:00:00', 1),
+                   ('1b5f3bce-7939-461f-a57c-43ac367f9e39', 'Nikita', 'Smirnov', 'Male', 'MN', '456789',
+                    '2024-01-12T14:00:00', '2024-01-12T14:00:00', 2),
+                   ('c10b4210-bfba-46ba-a184-6043c7e24caf', 'Anna', 'Kovaleva', 'Female', 'OP', '678901',
+                    '2003-01-12T15:00:00', '2003-01-12T15:00:00', 3),
+                   ('6b02d396-d96e-4c5a-a49c-a51fa3b0560e', 'Sergey', 'Pavlov', 'Male', 'QR', '890123',
+                    '2022-01-12T16:00:00', '2022-01-12T16:00:00', 4),
+                   ('ddf1da95-a11d-47c9-af11-390c0ece8426', 'Ekaterina', 'Vasnetsova', 'Female', 'ST', '012345',
+                    '2022-01-12T17:00:00', '2022-01-12T17:00:00', 4);
+        </sql>
+    </changeSet>
+</databaseChangeLog>

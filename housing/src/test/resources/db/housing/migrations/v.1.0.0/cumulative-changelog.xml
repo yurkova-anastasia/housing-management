@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <include file="2024-01-09__1_create_houses.xml" relativeToChangelogFile="true"/>
+    <include file="2024-01-09__2_create_people.xml" relativeToChangelogFile="true"/>
+    <include file="2024-01-09__3_create_houses_owners.xml" relativeToChangelogFile="true"/>
+    <include file="2024-01-18__4_create_house_history.xml" relativeToChangelogFile="true"/>
+    <include file="2024-01-18__5_house_history_trigger.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>

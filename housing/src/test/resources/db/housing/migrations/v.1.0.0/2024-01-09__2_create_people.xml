@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="1" author="anastasia.yurkova2003@gmail.com">
+        <createTable tableName="people">
+            <column name="id" type="bigserial" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="uuid" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sex" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="passport_series" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="passport_number" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_date" type="timestamp without time zone">
+                <constraints nullable="false"/>
+            </column>
+            <column name="update_date" type="timestamp without time zone"/>
+            <column name="residency_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="anastasia.yurkova2003@gmail.com">
+        <sql>
+            ALTER TABLE people
+                ADD CONSTRAINT uc_people_passport_series_passport_number UNIQUE(passport_series, passport_number)
+        </sql>
+        <rollback>
+            <sql>
+                ALTER TABLE people DROP CONSTRAINT uc_people_passport_series_passport_number
+            </sql>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="3" author="anastasia.yurkova2003@gmail.com">
+        <addForeignKeyConstraint baseTableName="people" baseColumnNames="residency_id"
+                                 constraintName="fk_people_houses_residency_id"
+                                 referencedTableName="houses"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>
