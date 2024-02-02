@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <!-- Add trigger for updating HouseHistory on residency change -->
+    <changeSet id="1" author="anastasia.yurkova2003@gmail.com">
+        <sql>
+            CREATE OR REPLACE FUNCTION update_house_history_on_residency_change()
+            RETURNS TRIGGER
+            LANGUAGE plpgsql
+            AS '
+                BEGIN
+                    IF NEW.residency_id IS DISTINCT FROM OLD.residency_id THEN
+                        INSERT INTO house_history (house_id, person_id, date, type)
+                        VALUES (OLD.residency_id, NEW.id, CURRENT_TIMESTAMP, ''TENANT'');
+                    END IF;
+                RETURN NEW;
+                END;
+            '
+        </sql>
+    </changeSet>
+
+    <changeSet id="2" author="anastasia.yurkova2003@gmail.com">
+        <sql>
+            CREATE TRIGGER trigger_residency_change
+                AFTER UPDATE ON people
+                FOR EACH ROW
+                WHEN (NEW.residency_id IS DISTINCT FROM OLD.residency_id)
+            EXECUTE FUNCTION update_house_history_on_residency_change()
+        </sql>
+    </changeSet>
+
+    <!-- Add trigger for updating HouseHistory on ownership change -->
+    <changeSet id="3" author="anastasia.yurkova2003@gmail.com">
+        <sql>
+            CREATE OR REPLACE FUNCTION update_house_history_on_ownership_change()
+            RETURNS TRIGGER
+            LANGUAGE plpgsql
+            AS '
+                BEGIN
+                    INSERT INTO house_history (house_id, person_id, date, type)
+                    VALUES (NEW.house_id, NEW.owner_id, CURRENT_TIMESTAMP, ''OWNER'');
+                RETURN NEW;
+                END;
+            '
+        </sql>
+    </changeSet>
+
+    <changeSet id="4" author="anastasia.yurkova2003@gmail.com">
+        <sql>
+            CREATE TRIGGER trigger_ownership_change
+                AFTER DELETE ON houses_owners
+                FOR EACH ROW
+                EXECUTE FUNCTION update_house_history_on_ownership_change()
+        </sql>
+    </changeSet>
+</databaseChangeLog>

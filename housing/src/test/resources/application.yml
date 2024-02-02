@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: test
+    password: test
+  liquibase:
+    change-log: classpath:db/housing/changelog.xml
+cache:
+  size: 16
+  type: LRU

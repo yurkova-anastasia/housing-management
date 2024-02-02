@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: postgis/postgis:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "psql postgresql://postgres@:5432/postgres -c 'select 1;'" ]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+
+  liquibase-housing:
+    image: liquibase/liquibase:4.6.2
+    container_name: liquibase-housing
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./db/:/db/
+    command: >
+      liquibase
+        --logLevel=INFO
+        --driver=org.postgresql.Driver
+        --classpath="/db/housing/"
+        --changeLogFile="changelog.xml"
+        --url="jdbc:postgresql://postgres:5432/postgres"
+        --username=postgres
+        --password=postgres  
+      update

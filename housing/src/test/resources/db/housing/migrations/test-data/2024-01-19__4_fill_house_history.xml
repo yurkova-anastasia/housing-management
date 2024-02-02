@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="1" author="anastasia.yurkova2003@gmail.com">
+        <sql>
+            INSERT INTO house_history (house_id, person_id, date, type)
+            VALUES
+                ( 1, 2, '2022-01-11T08:00:00', 'OWNER'),
+                ( 2, 3, '2001-09-12T09:00:00', 'OWNER'),
+                ( 1, 2, '2022-01-11T10:00:00', 'TENANT'),
+                ( 2, 3, '2022-09-12T10:00:00', 'TENANT')
+        </sql>
+    </changeSet>
+</databaseChangeLog>

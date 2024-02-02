@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="1" author="anastasia.yurkova2003@gmail.com">
+        <createTable tableName="house_history">
+            <column name="id" type="bigserial" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="house_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="person_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="timestamp without time zone">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="anastasia.yurkova2003@gmail.com">
+        <addForeignKeyConstraint baseTableName="house_history" baseColumnNames="house_id"
+                                 constraintName="fk_house_history_houses_house_id"
+                                 referencedTableName="houses"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="3" author="anastasia.yurkova2003@gmail.com">
+        <addForeignKeyConstraint baseTableName="house_history" baseColumnNames="person_id"
+                                 constraintName="fk_house_history_people_person_id"
+                                 referencedTableName="people"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>

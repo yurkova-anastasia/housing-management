@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="1" author="anastasia.yurkova2003@gmail.com">
+        <sql>
+            INSERT INTO houses (uuid, area, country, city, street, number, create_date, update_date)
+            VALUES ('59c89acc-62a4-4cbc-87ed-78f632996c08', 'Area1', 'Country1', 'City1', 'Street1', 'Number1', '2022-01-12T08:00:00',
+                    '2022-01-12T08:00:00'),
+                   ('7d0fed5b-b7d5-461a-988a-1cd52b591d80', 'Area2', 'Country2', 'City2', 'Street2', 'Number2', '2022-01-12T09:00:00',
+                    '2022-01-12T09:00:00'),
+                   ('49475f3e-bc1e-4c71-8a9d-4b0fcace530f', 'Area3', 'Country3', 'City3', 'Street3', 'Number3', '2022-01-12T10:00:00',
+                    '2022-01-12T10:00:00'),
+                   ('af33aecd-1cdc-4af1-afa3-cbec5b2cdf7b', 'Area4', 'Country4', 'City4', 'Street4', 'Number4', '2022-01-12T11:00:00',
+                    '2022-01-12T11:00:00'),
+                   ('3e22c30e-20ea-4cf8-8317-0de34139aa8f', 'Area5', 'Country5', 'City5', 'Street5', 'Number5', '2022-01-12T12:00:00',
+                    '2022-01-12T12:00:00');
+        </sql>
+    </changeSet>
+</databaseChangeLog>

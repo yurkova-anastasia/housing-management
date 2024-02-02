@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="1" author="anastasia.yurkova2003@gmail.com">
+        <sql>
+            INSERT INTO people (uuid, name, surname, sex, passport_series, passport_number, create_date, update_date, residency_id)
+            VALUES
+                (gen_random_uuid(), 'Иван', 'Иванов', 'Male', 'AB', '123456', '2022-01-12T08:00:00', '2022-01-12T08:00:00', 1),
+                (gen_random_uuid(), 'Мария', 'Петрова', 'Female', 'CD', '789012', '2001-12-12T09:00:00', '2001-12-12T09:00:00', 2),
+                (gen_random_uuid(), 'Александр', 'Сидоров', 'Male', 'EF', '345678', '2022-11-12T10:00:00', '2022-11-12T10:00:00', 3),
+                (gen_random_uuid(), 'Елена', 'Козлова', 'Female', 'GH', '901234', '2022-01-12T11:12:00', '2022-01-12T11:12:00', 4),
+                (gen_random_uuid(), 'Дмитрий', 'Морозов', 'Male', 'IJ', '567890', '2022-01-12T12:11:00', '2022-01-12T12:11:00', 4),
+                (gen_random_uuid(), 'Ольга', 'Никитина', 'Female', 'KL', '123789', '2023-01-12T13:00:00', '2023-01-12T13:00:00', 1),
+                (gen_random_uuid(), 'Никита', 'Смирнов', 'Male', 'MN', '456789', '2024-01-12T14:00:00', '2024-01-12T14:00:00', 2),
+                (gen_random_uuid(), 'Анна', 'Ковалева', 'Female', 'OP', '678901', '2003-01-12T15:00:00', '2003-01-12T15:00:00', 3),
+                (gen_random_uuid(), 'Сергей', 'Павлов', 'Male', 'QR', '890123', '2022-01-12T16:00:00', '2022-01-12T16:00:00', 4),
+                (gen_random_uuid(), 'Екатерина', 'Васнецова', 'Female', 'ST', '012345', '2022-01-12T17:00:00', '2022-01-12T17:00:00', 4);
+        </sql>
+    </changeSet>
+</databaseChangeLog>
